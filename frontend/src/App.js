@@ -1,18 +1,12 @@
 import React from "react"
-import IssueAdd from "./components/IssueAdd";
-import IssueFilter from "./components/IssueFilter";
 import IssueList from "./components/IssueList";
-import IssueTable from "./components/IssueTable";
-
+import IssueForm from "./components/IssueForm";
 
 function App() {
   return (<div className="App">
-    <IssueAdd/>
-    <IssueFilter/>
-    <IssueList/>
-   <IssueTable/>
-
-</div>
+    <IssueList />
+    <IssueForm />
+  </div>
   );
 }
 
