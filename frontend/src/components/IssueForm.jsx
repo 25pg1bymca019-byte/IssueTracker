@@ -4,7 +4,6 @@ import React from "react"
 
 function IssueForm() {
         const [form, setForm] = useState({
-                id: " ",
                 title: " ",
                 description: " ",
                 owner: " ",
@@ -28,7 +27,7 @@ function IssueForm() {
                         console.log('Data Sent')
 
                         setForm({
-                                id: '',
+
                                 title: '',
                                 description: '',
                                 owner: '',
@@ -46,8 +45,7 @@ function IssueForm() {
                         <h1>Issue Form</h1>
 
                         <form onSubmit={handleSubmit}>
-                                <label>Id:</label>
-                                <input type="text" name="id" value={form.id} onChange={handleChange} /> <br />
+
 
                                 <label>Title:</label>
                                 <input type="text" name="title" value={form.title} onChange={handleChange} /> <br />

@@ -7,7 +7,7 @@ function IssueList() {
 
   const fetchIssue = async () => {
     try {
-      const res = await axios.get("http://localhost:5001/api/issues");
+      const res = await axios.get('http://localhost:5001/api/issues');
       setIssues(res.data);
     } catch (error) {
       alert("Error fetching Data")
@@ -35,7 +35,6 @@ function IssueList() {
   useEffect(() => {
     fetchIssue();
   }, [])
-
 
   return (
     <div className="isssue-list-container">
