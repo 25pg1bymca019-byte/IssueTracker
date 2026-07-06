@@ -5,7 +5,7 @@ import axios from "axios";
 function IssueList() {
   const [issues, setIssues] = useState([])
 
-  const fetchIssue = async () => {
+  const fetchIssues = async () => {
     try {
       const res = await axios.get('http://localhost:5001/api/issues');
       setIssues(res.data);
@@ -23,6 +23,7 @@ function IssueList() {
       console.log(error);
     }
   };
+
   const updateStatus = async (id, newStatus) => {
     try {
       await axios.put(`http://localhost:5001/api/issues/${id}`, { status: newStatus });
@@ -32,12 +33,13 @@ function IssueList() {
       console.log(error);
     }
   };
+
   useEffect(() => {
-    fetchIssue();
+    fetchIssues();
   }, [])
 
   return (
-    <div className="isssue-list-container">
+    <div className="issue-list-container">
       <h2 className="issue-list-title">Issues</h2>
 
       {issues.length === 0 && (
@@ -51,11 +53,35 @@ function IssueList() {
 
           <p><b>Description:</b> {issue.description}</p>
 
+          <p>
+            <b>Status:</b>{' '}
+            <span className={`status-badge ${issue.status === 'Open'
+              ? 'status-open'
+              : issue.status === 'In progress'
+                ? 'status-in-progress'
+                : 'status-resolved'
+              }`}>
+              {issue.status || 'Open'}
+            </span>
+          </p>
+
           <p><b>Owner:</b> {issue.owner}</p>
 
-          <p><b>Due_Date:</b>{issue.due_date}</p>
+          <p><b>Due Date:</b> {issue.due_date}</p>
 
-          <p><b>Priority:</b>{issue.priority}</p>
+          <p><b>Priority:</b> {issue.priority}</p>
+
+          <div className="ticket-actions">
+            <button onClick={() => updateStatus(issue._id, 'In progress')}>
+              In Progress
+            </button>
+            <button onClick={() => updateStatus(issue._id, 'Resolved')}>
+              Resolved
+            </button>
+            <button onClick={() => deleteIssue(issue._id)}>
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>

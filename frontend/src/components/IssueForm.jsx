@@ -68,7 +68,7 @@ function IssueForm() {
                                 <label>Due Date:</label>
                                 <input type="text" name="due_date" value={form.due_date} onChange={handleChange} /> <br />
 
-                                <button type="submit">Create Ticket</button>
+                                <button type="submit">Create Isssue</button>
                         </form>
                 </>
         );

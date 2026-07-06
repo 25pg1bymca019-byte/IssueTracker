@@ -4,8 +4,8 @@ import IssueForm from "./components/IssueForm";
 
 function App() {
   return (<div className="App">
-    <IssueList />
     <IssueForm />
+    <IssueList />
   </div>
   );
 }
